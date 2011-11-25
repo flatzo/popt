@@ -1,4 +1,36 @@
 1.17 -> 2.0:
+    - devzero2000: give some color to autogen.sh
+      Certainly not so useful but not hurt either.
+    - jbj: i18n: msgmerge (Translation Project).
+    - devzero2000: redo commit 8396019 
+      Useless to have format crap just for conforming
+      to oddball platform 
+      (http://rpm5.org/community/rpm-devel/5166.html).
+      Keep the patch only inside MinGW.
+    - devzero2000: merge commit fc8836e from git pull request  
+      https://github.com/devzero2000/POPT/pull/2 
+      "Fix more MSVC build warnings"
+      by asenm (Matt Arsenault). This is the last commit
+      of this patch series and pull request.
+    - devzero2000: merge commit aee9f24 from git pull request  
+      https://github.com/devzero2000/POPT/pull/2 
+      "Add makefile for mingw" 
+      by asenm (Matt Arsenault). Include these new object 
+      in EXTRA_DIST (Makefile.am) by devzero2000 (Elia Pinto)
+    - devzero2000: merge commit 8396019 from git pull request  
+      https://github.com/devzero2000/POPT/pull/2 
+      "Work around missing format for long long in windows; fix warnings"
+      by asenm (Matt Arsenault)
+    - devzero2000: merge  commit ea2978d from git pull request 
+      https://github.com/devzero2000/POPT/pull/2 
+      "Fix build with MinGW 32/64 + MSVC" by arsenm
+      (Matt Arsenault)
+    - devzero2000: fix compiler warning -Wunused-but-set-variable (GCC 4.6)
+    - devzero2000: redo the autofu vendor-script linker script check for openindiana native
+      ld, using modern and not deprecated autoconf construct. Even if the check is not perfect 
+      but it is based on a resultant ld warning, on openindiana the result actually work
+      with gcc and native ld. This patch also fix the build 
+      on openindiana broken by the precedent patch.
     - devzero2000: add missing README-prereq
     - devzero2000: try to redo the bootstrap check better
     - devzero2000: add configmake.h to .gitignore
