@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: popt 1.11\n"
 "Report-Msgid-Bugs-To: <popt-devel@rpm5.org>\n"
-"POT-Creation-Date: 2010-11-04 17:12-0400\n"
+"POT-Creation-Date: 2012-02-09 17:12+0100\n"
 "PO-Revision-Date: 2001-06-27 11:05+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
@@ -11,68 +11,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 "Language: no\n"
 
-#: popt.c:53
+#: popt.c:54
 msgid "unknown errno"
 msgstr "ukjent errno"
 
-#: popt.c:1419
+#: popt.c:1437
 #, fuzzy, c-format
 msgid "option type (%u) not implemented in popt\n"
 msgstr "flaggtype (%d) ikke implementert i popt\n"
 
-#: popt.c:1864
+#: popt.c:1887
 msgid "missing argument"
 msgstr "manglende argument"
 
-#: popt.c:1866
+#: popt.c:1889
 msgid "unknown option"
 msgstr "ukjent flagg"
 
-#: popt.c:1868
+#: popt.c:1891
 msgid "mutually exclusive logical operations requested"
 msgstr "gjensidig eksluderende logiske operasjoner forespurt"
 
-#: popt.c:1870
+#: popt.c:1893
 msgid "opt->arg should not be NULL"
 msgstr "opt->arg må ikke være NULL"
 
-#: popt.c:1872
+#: popt.c:1895
 msgid "aliases nested too deeply"
 msgstr "aliaser med for dype løkker"
 
-#: popt.c:1874
+#: popt.c:1897
 msgid "error in parameter quoting"
 msgstr "feil i parametersitering"
 
-#: popt.c:1876
+#: popt.c:1899
 msgid "invalid numeric value"
 msgstr "ugyldig numerisk verdi"
 
-#: popt.c:1878
+#: popt.c:1901
 msgid "number too large or too small"
 msgstr "tallet er for stort eller lite"
 
-#: popt.c:1880
+#: popt.c:1903
 msgid "memory allocation failed"
 msgstr "minneallokering feilet"
 
-#: popt.c:1882
+#: popt.c:1905
 msgid "config file failed sanity test"
 msgstr ""
 
-#: popt.c:1884
+#: popt.c:1907
 msgid "option does not take an argument"
 msgstr ""
 
-#: popt.c:1886
+#: popt.c:1909
 msgid "stack underflow"
 msgstr ""
 
-#: popt.c:1888
+#: popt.c:1911
 msgid "stack overflow"
 msgstr ""
 
-#: popt.c:1892
+#: popt.c:1915
 msgid "unknown error"
 msgstr "ukjent feil"
 
@@ -141,7 +141,7 @@ msgstr "DOUBLE"
 msgid "ARG"
 msgstr "ARG"
 
-#: popthelp.c:663
+#: popthelp.c:664
 msgid "Usage:"
 msgstr "Bruk:"
 
