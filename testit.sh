@@ -1,18 +1,57 @@
-#!/bin/sh
+#!/bin/sh 
 ###############################################
 # malloc voo-doo
 ###############################################
 # see http://lists.gnupg.org/pipermail/gcrypt-devel/2010-June/001605.html
-export MALLOC_CHECK_=3
-# http://udrepper.livejournal.com/11429.html
-export MALLOC_PERTURB_=`expr \( $RANDOM % 255 \) + 1 `
+# and http://udrepper.livejournal.com/11429.html
+###############################################
+# 
 #
-if [ -z "${MALLOC_PERTURB_}" ]  # XXX: some shell don't have RANDOM ?
-then
-	r=`ps -ef | cksum | cut -f1 -d" " 2>/dev/null`
-	[ -z "${r}" ] && r=1234567890
-        export MALLOC_PERTURB_=`expr \( $r % 255 \) + 1 `
+: --Get_Random_Number
+#####################
+# Purpose:
+#  Get a Random Number from 0-256 range in a shell 
+#  portable way
+#  see here for more info on RANDOM bashism
+#  http://mywiki.wooledge.org/Bashism
+#####################
+Get_Random_Number() {
+
+local RANDOM_NUMBER="${RANDOM}"
+
+if [ -n "${RANDOM_NUMBER}" ] 
+then 
+  RANDOM_NUMBER="$(expr \( ${RANDOM_NUMBER} % 255 \) + 1)"
+else
+ if type awk >/dev/null 2>&1 
+ then 
+	 RANDOM_NUMBER="$(awk 'BEGIN{srand(); printf "%d\n",(rand()*256)}')" 
+ else
+  if type hexdump >/dev/null 2>&1 && [ -e /dev/urandom ] 
+  then 
+	 RANDOM_NUMBER="$(hexdump -n 1 -e '/1 "%u"' /dev/urandom)"
+  else
+   if type od >/dev/null 2>&1 && [ -e /dev/urandom ] 
+   then 
+         RANDOM_NUMBER="$(od -A n -N 1 -t u1 /dev/urandom)"
+   else
+    if type cksum >/dev/null 2>&1 && type ps >/dev/null 2>&1 
+    then 
+        TEMP_RANDOM="$(ps -ef | cksum | cut -f1 -d" " 2>/dev/null)"
+        RANDOM_NUMBER="$(expr \( ${TEMP_RANDOM} % 255 \) + 1)"
+    else
+        TEMP_RANDOM=1234567890
+        RANDOM_NUMBER="$(expr \( ${TEMP_RANDOM} % 255 \) + 1)"
+    fi
+   fi
+  fi
+ fi
 fi
+echo "${RANDOM_NUMBER}"
+}
+export MALLOC_CHECK_=3
+export MALLOC_PERTURB_="$(Get_Random_Number)"
+#
 
 run() {
     prog=$1; shift
@@ -20,6 +59,8 @@ run() {
     answer=$1; shift
 
     echo Running test $name.
+
+    echo $PWD
 
     result=`HOME=$builddir $builddir/$prog $* 2>&1`
 
@@ -54,7 +95,7 @@ run_diff() {
 }
 
 builddir=`pwd`
-#srcdir=$builddir
+[ -z "$srcdir" ] && srcdir=$builddir
 cd ${srcdir}
 test1=${builddir}/test1
 echo "Running tests in $builddir" 
