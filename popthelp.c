@@ -15,6 +15,9 @@
 #if defined(HAVE_SYS_IOCTL_H)
 #include <sys/ioctl.h>
 #endif
+#if defined(HAVE_STRUCT_WINSIZE_TERMIOS)
+#include <asm/termios.h>
+#endif /* HAVE_STRUCT_WINSIZE_TERMIOS */
 #endif
 
 #define	POPT_WCHAR_HACK

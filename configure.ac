@@ -302,6 +302,13 @@ AC_TYPE_UINT32_T
 AC_TYPE_UINT8_T
 AC_TYPE_INT64_T
 
+AC_CHECK_TYPES([struct winsize],
+               [AC_DEFINE([HAVE_STRUCT_WINSIZE_TERMIOS],
+                          [1],
+                          [Define to 1 if `struct winsize` is defined in asm/termios.h])
+               ], [],
+               [#include<asm/termios.h>])
+
 # Checks for library functions.
 AC_CHECK_FUNC(setreuid, [], [
     AC_CHECK_LIB(ucb, setreuid, [if echo $LIBS | grep -- -lucb >/dev/null ;then :; else LIBS="$LIBS -lc -lucb" USEUCB=y;fi])
